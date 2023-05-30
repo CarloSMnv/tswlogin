@@ -1,0 +1,1 @@
+0|2023-05-30 14:47:11|aaaaa@asd|127.0.0.1|Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0|Windows 7|Captcha invalido

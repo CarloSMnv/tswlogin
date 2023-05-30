@@ -1,0 +1,7 @@
+Tabla Login Logs
+
+CREATE TABLE `dbtopicos2`.`login_logs` (`id` INT(11) NOT NULL AUTO_INCREMENT , `email` VARCHAR(100) NOT NULL , `estado` INT(1) NOT NULL , `ip` VARCHAR(50) NOT NULL , `fecha_hora` DATETIME(6) NOT NULL , `navegador` VARCHAR(50) NOT NULL , `sistema_operativo` VARCHAR(100) NOT NULL , `validation` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci; 
+
+Tabla Users
+
+CREATE TABLE `dbtopicos2`.`users` (`id` INT(11) NOT NULL AUTO_INCREMENT , `email` VARCHAR(100) NOT NULL , `name` VARCHAR(150) NOT NULL , `password` VARCHAR(250) NOT NULL , `role` VARCHAR(15) NOT NULL , PRIMARY KEY (`id`), UNIQUE `email` (`email`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci; 
