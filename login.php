@@ -46,7 +46,7 @@
     if (empty($error)) {
         // Verificar el reCAPTCHA
         $captcha_response = $_POST['g-recaptcha-response'];
-        $secret_key = '6Le1sT4mAAAAAF0fwNjTl9b2snuIUL55Tzo0Hbh4'; // Reemplazar con su clave secreta de reCAPTCHA
+        $secret_key = '6LfPnBUmAAAAALuoBJlghT0K3Rk1vtk2Qiq704zk'; // Reemplazar con su clave secreta de reCAPTCHA
         $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $captcha_response);
         $response_data = json_decode($verify_response);
         if ($response_data->success) {
@@ -128,7 +128,7 @@
                                     <?php echo $error; ?>
                                   </div>
                                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                  <div class="g-recaptcha" data-sitekey="6Le1sT4mAAAAAFOlw9MaxuivCXU0DEv2QmEusgGt"></div>
+                                  <div class="g-recaptcha" data-sitekey="6LfPnBUmAAAAAMVb-pBwmm7CvbPER0nHP1cAGsKC"></div>
                                   </div>
                                   <button id="login_btn" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" name="submit" <?php if($disable_login_button) echo 'disabled'; ?>>Iniciar Sesión </button>
                                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
