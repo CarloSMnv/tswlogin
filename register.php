@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             if ($result) {
                 // Verificación del captcha
                 $captcha_response = $_POST['g-recaptcha-response'];
-                $secret_key = "6Le1sT4mAAAAAF0fwNjTl9b2snuIUL55Tzo0Hbh4";
+                $secret_key = "6LfPnBUmAAAAALuoBJlghT0K3Rk1vtk2Qiq704zk";
                 $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret_key}&response={$captcha_response}");
                 $captcha_success = json_decode($verify);
 
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     </div>
                   </div>
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                  <div class="g-recaptcha" data-sitekey="6Le1sT4mAAAAAFOlw9MaxuivCXU0DEv2QmEusgGt"></div>
+                  <div class="g-recaptcha" data-sitekey="6LfPnBUmAAAAAMVb-pBwmm7CvbPER0nHP1cAGsKC"></div>
                   </div>
                   
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
