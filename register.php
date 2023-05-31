@@ -4,7 +4,14 @@ require_once "session.php";
 $error = '';
 $success = '';
 $result = false;
+if (!isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            // Token CSRF inválido, manejar el error o redireccionar a una página de error.
+            exit("Error de seguridad: token CSRF inválido.");
+        }
     $fullname = trim($_POST['name']);
     $email = trim($_POST['email']); 
     $password = trim($_POST['password']); 
@@ -91,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 </div>
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate!</p>
                 <form class="mx-1 mx-md-4" method="post" action="">
+                  <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
