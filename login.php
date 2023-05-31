@@ -4,7 +4,14 @@
     require_once "logs.php";
     $error='';
     $disable_login_button = false;
+    if (!isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            // Token CSRF inválido, manejar el error o redireccionar a una página de error.
+            exit("Error de seguridad: token CSRF inválido.");
+        }
         $email = trim($_POST['email']); 
         $password = trim($_POST['password']);
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -110,6 +117,7 @@
                               </div>
                               <div class="modal-body p-5 pt-0">
                                 <form class="" method="post" action="">
+                                  <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                                   <div class="form-floating mb-3">
                                     <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required name="email">
                                     <label for="floatingInput">Correo electronico</label>
